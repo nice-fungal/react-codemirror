@@ -1,13 +1,12 @@
 const React = require('react');
-const ReactDOM = require('react-dom-polyfill')(React);
+const ReactDOM = require('react-dom');
 const findDOMNode = ReactDOM.findDOMNode;
-const className = require('classnames');
 const debounce = require('lodash.debounce');
 
 const CodeMirror = React.createClass({
 	propTypes: {
 		className: React.PropTypes.any,
-		codeMirrorInstance: React.PropTypes.func,
+		codeMirrorInstance: React.PropTypes.string,
 		defaultValue: React.PropTypes.string,
 		onChange: React.PropTypes.func,
 		onFocusChange: React.PropTypes.func,
@@ -17,7 +16,12 @@ const CodeMirror = React.createClass({
 		value: React.PropTypes.string,
 	},
 	getCodeMirrorInstance () {
-		return this.props.codeMirrorInstance || require('codemirror');
+		return window[this.props.codeMirrorInstance];
+	},
+	getDefaultProps() {
+		return {
+			codeMirrorInstance: 'CodeMirror',
+		};
 	},
 	getInitialState () {
 		return {
@@ -78,13 +82,13 @@ const CodeMirror = React.createClass({
 		}
 	},
 	render () {
-		const editorClassName = className(
-			'ReactCodeMirror',
-			this.state.isFocused ? 'ReactCodeMirror--focused' : null,
-			this.props.className
-		);
+		let classes = 'ReactCodeMirror ';
+		if (this.state.isFocused) {
+			classes += 'ReactCodeMirror--focused';
+		}
+		classes += this.props.className;
 		return (
-			<div className={editorClassName}>
+			<div className={classes}>
 				<textarea ref="textarea" name={this.props.path} defaultValue={this.props.value} autoComplete="off" />
 			</div>
 		);

@@ -1,36 +1,30 @@
 {
-  "name": "react-codemirror",
-  "version": "0.2.6",
-  "description": "Codemirror",
+  "name": "react-codemirror-lite",
+  "version": "0.2.6-5",
+  "description": "Codemirror React Component",
   "main": "lib/Codemirror.js",
-  "author": "Jed Watson",
+  "author": "Jed Watson, hbrls<shuaizhexu@gmail.com>",
   "license": "MIT",
-  "homepage": "https://github.com/JedWatson/react-codemirror",
+  "homepage": "https://github.com/hbrls/react-codemirror-lite",
   "repository": {
     "type": "git",
-    "url": "https://github.com/JedWatson/react-codemirror.git"
+    "url": "https://github.com/hbrls/react-codemirror-lite.git"
   },
   "bugs": {
-    "url": "https://github.com/JedWatson/react-codemirror/issues"
+    "url": "https://github.com/hbrls/react-codemirror-lite/issues"
   },
   "dependencies": {
-    "classnames": "^2.2.5",
-    "codemirror": "^5.18.2",
     "lodash.debounce": "^4.0.8"
   },
   "devDependencies": {
-    "gulp": "^3.9.1",
+    "gulp": "3.9.1",
     "happiness": "^7.1.2",
     "react": "^15.3.1",
-    "react-dom": "^15.3.1",
     "react-component-gulp-tasks": "^0.7.7",
-    "react-dom-polyfill": "^1.0.0-beta.2"
+    "react-dom": "^15.3.1"
   },
   "peerDependencies": {
-    "react": ">=0.12 <16"
-  },
-  "browserify-shim": {
-    "react": "global:React"
+    "react": ">=0.14 <16"
   },
   "scripts": {
     "build": "gulp clean && NODE_ENV=production gulp build",
